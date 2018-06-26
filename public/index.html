@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Priority</title>
+    <link rel="stylesheet" href="styles/style.css" type="text/css">
+    <script src="scripts/common.js"></script>
+
+</head>
+<body>
+<form>
+
+  <input type="text" name="path" id="path" placeholder="Enter the url" onchange="checkPath()" value="http://www.vstup.info/2017/41/i2017i41p369325.html"><br><br>
+  <input type="text" name="pib"  id="pib" placeholder="Enter your PIB like XXXXX X. X." value="Світашова Ю. О."><br><br>
+
+  <select id="priority">
+      <option value="first">1</option>
+      <option value="first and second">1 and 2</option>
+      <option value="first and second and third">1 and 2 and 3</option>
+  </select>
+
+</form>
+<br>
+<button onclick="getInfo()">Calculate</button>
+<div id="result">
+</div>
+
+<img src="images/InternetSlowdown_Day.gif" id="img">
+
+
+</body>
+</html>

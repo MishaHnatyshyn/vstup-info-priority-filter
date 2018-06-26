@@ -1,0 +1,14 @@
+{ 
+  "name": "SbP", 
+  "version": "1.0.0", 
+  "description": "Searching by Priority", 
+  "main": "app.js", 
+  
+  "scripts": { 
+  "install": "npm install request|npm install node-static",
+  "start": "node app.js"
+
+  }, 
+  "author": "MH", 
+  "license": "MIT" 
+}
