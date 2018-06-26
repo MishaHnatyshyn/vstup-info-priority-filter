@@ -1,7 +1,7 @@
 'use strict';
 const request = require('request');
 const parser = require('./parser');
-const server = require('./app');
+const server = require('../app');
 let result;
 
 function get(path,pib,prior) {

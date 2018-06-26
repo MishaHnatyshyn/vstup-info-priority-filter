@@ -3,8 +3,8 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-const func = require('./functions');
-const get = require('./getData');
+const func = require('./server/functions');
+const get = require('./server/getData');
 const stat = require('node-static');
 const fileServer = new stat.Server( './public', {
     cache: 3600,

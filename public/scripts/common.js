@@ -26,6 +26,6 @@ function getInfo(){
 
 function checkPath(){
     let path = document.getElementById('path').value;
-    document.getElementById('path').style.backgroundColor = !path.indexOf('http://')?' rgba(0, 212, 0, 0.63)' : 'rgba(211, 15, 0, 0.76)' ;
+    document.getElementById('path').style.backgroundColor = !path.indexOf('http://vstup.info/')?' rgba(0, 212, 0, 0.63)' : 'rgba(211, 15, 0, 0.76)' ;
     if(path === '')document.getElementById('path').style.backgroundColor = 'white';
 }
