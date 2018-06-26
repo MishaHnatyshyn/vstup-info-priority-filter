@@ -13,8 +13,11 @@ function getInfo(){
     xhttp.onreadystatechange = function(){
         if(this.readyState === 4 && this.status === 200){
             document.getElementById('img').style.display = 'none';
-
-            document.getElementById('result').innerHTML = '<br><br><br><h1>'+'Your rate by '+priority+' priority is: '+ this.responseText +'</h1>';
+            let pr_answr;
+            if (priority == 1 ) pr_answr = 'first';
+            else if (priority == 2) pr_answr = 'first and second';
+            else pr_answr = 'first, second and third';
+            document.getElementById('result').innerHTML = '<br><br><br><h1>'+'Your rate by the '+pr_answr+' priority is: '+ this.responseText +'</h1>';
         }};
 
     xhttp.open('GET', 'server.js?path='+ path + '&pib=' + pib + '&prior=' + priority, true);

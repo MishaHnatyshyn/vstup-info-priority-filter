@@ -2,7 +2,7 @@
 const request = require('request');
 const parser = require('./parser');
 const server = require('../app');
-let result;
+let info;
 
 function get(path, pib, prior, callback) {
 
@@ -10,8 +10,8 @@ function get(path, pib, prior, callback) {
         if (err) throw err;
 
         if (res.statusCode) {
-            result = parser.parse(body);
-            callback(pib, prior, result);
+            info = parser.parse(body);
+            callback(pib, prior, info);
         }
 
     });
