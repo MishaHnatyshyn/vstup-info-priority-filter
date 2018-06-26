@@ -4,16 +4,14 @@ const parser = require('./parser');
 const server = require('../app');
 let result;
 
-function get(path,pib,prior) {
-    let data;
+function get(path, pib, prior, callback) {
+
     request(path, function (err, res, body) {
         if (err) throw err;
 
         if (res.statusCode) {
             result = parser.parse(body);
-            module.exports.obj = result;
-            server.answer(pib,prior);
-
+            callback(pib, prior, result);
         }
 
     });

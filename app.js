@@ -20,28 +20,14 @@ const server = (req, res)=>{
         let path = data.path;
         const pib = data.pib;
         const prior = data.prior;
-        get.getData(path,pib,prior);
-
-        // noinspection JSAnnotator
-        function answer(pib,prior) {
-            info = get.obj;
-            const causes = {
-                'first':func.getNumOfOnePriority(info,pib),
-                'first and second':func.getNumOfTwoPriority(info,pib),
-                'first and second and third':func.getNumOfThreePriority(info,pib)
-            }
-            const answer = causes[prior];
+        get.getData(path,pib,prior, (pib,prior, info)=>{
+            const answer = func.getRateByPriority(info, pib, prior);
             res.end(''+answer);
-        }
-
-        module.exports.answer = answer ;
-
-            }else {
-                req.addListener( 'end', function () {
-                    fileServer.serve( req, res );
-                } ).resume();
-
-
+        });
+    }else {
+        req.addListener( 'end', function () {
+            fileServer.serve( req, res );
+        } ).resume();
     }
 };
 
