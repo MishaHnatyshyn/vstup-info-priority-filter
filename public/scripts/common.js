@@ -17,7 +17,10 @@ function getInfo(){
             if (priority == 1 ) pr_answr = 'first';
             else if (priority == 2) pr_answr = 'first and second';
             else pr_answr = 'first, second and third';
-            document.getElementById('result').innerHTML = '<br><br><br><h1>'+'Your rate by the '+pr_answr+' priority is: '+ this.responseText +'</h1>';
+            let answer = this.responseText === '0'? 'This person is not mentioned in the list':
+                'Your rate by the '+pr_answr+' priority is: '+ this.responseText;
+
+            document.getElementById('result').innerHTML = '<br><br><br><h1>'+ answer +'</h1>';
         }};
 
     xhttp.open('GET', 'server.js?path='+ path + '&pib=' + pib + '&prior=' + priority, true);

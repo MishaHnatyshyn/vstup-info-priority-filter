@@ -6,7 +6,7 @@ function getRateByPriority(data, pib, priority) {
         if (data[key].pib == pib) return res + 1;
         if (parseInt(data[key].priority) <= priority)res++;
     }
-    return 'There no such a man in this list';
+    return 0;
 }
 
 module.exports = {
