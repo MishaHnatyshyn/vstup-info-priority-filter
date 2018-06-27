@@ -5,6 +5,58 @@ function getBlock(id) {
   return document.getElementById(id);
 }
 
+function parse(file, pib) {
+  const table = [];
+  const result = {};
+  const tableFields = ['number', 'pib', 'status', 'priority', 'kb', 'zno', 'kf', 'kw', 'docs'];
+  let start = file.indexOf('<tbody>', file.indexOf('<table id="150'));
+  let end = file.indexOf('</table>', start);
+  file = file.substring(start, end);
+
+  let pos = file.indexOf('<tr');
+  let count = 0;
+
+  while (pos !== -1) {
+    pos = file.indexOf('<tr', pos + 1);
+    count++;
+  }
+
+  end = 0;
+
+  for (let i = 0; i < count; i++) {
+    start = file.indexOf('<tr', end);
+    end = file.indexOf('</tr>', start);
+    table[i] = file.substring(start, end);
+  }
+  let key;
+
+  let str = '';
+  for (let i = 0; i < count; i++) {
+    end = 0;
+    const obj = {};
+    for (let j = 0; j < tableFields.length; j++) {
+      key = tableFields[j];
+      start = table[i].indexOf('<td', end);
+      end = table[i].indexOf('</td>', start);
+      str = table[i].substring(start, end);
+      str = str.substring(str.indexOf('>') + 1);
+      obj[key] = str;
+    }
+    result[i] = obj;
+    if (obj.pib === pib) break;
+  }
+  return result;
+}
+
+function getRateByPriority(data, pib, priority) {
+  let res = 0;
+  for (const key in data) {
+    if (data[key].pib === pib) return '' + ++res;
+    if (parseInt(data[key].priority) <= priority)res++;
+  }
+  return '0';
+}
+
 function getInfo() {
   getBlock('result').innerHTML = '';
   getBlock('img').style.display = 'inline';
@@ -17,14 +69,16 @@ function getInfo() {
 
   xhttp.onreadystatechange = function() {
     if (this.readyState === 4 && this.status === 200) {
+      const info = parse(this.responseText, pib);
+      const rate = getRateByPriority(info, pib, priority);
       getBlock('img').style.display = 'none';
       const numToString = {
         '1': 'first',
         '2': 'first and second',
         '3': 'first, second and third'
       };
-      const answer = this.responseText === '0' ? 'This person is not mentioned in the list' :
-        'Your rate by the ' + numToString[priority] + ' priority is: ' + this.responseText;
+      const answer = rate === '0' ? 'This person is not mentioned in the list' :
+        'Your rate by the ' + numToString[priority] + ' priority is: ' + rate;
       getBlock('result').innerHTML = '<br><br><br><h1>' + answer + '</h1>';
     }
   };
