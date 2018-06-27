@@ -1,25 +1,16 @@
 'use strict';
-const request = require('request');
-const parser = require('./parser');
-const server = require('../app');
-let result;
+const request = require('request-promise');
 
-function get(path,pib,prior) {
-    let data;
-    request(path, function (err, res, body) {
-        if (err) throw err;
-
-        if (res.statusCode) {
-            result = parser.parse(body);
-            module.exports.obj = result;
-            server.answer(pib,prior);
-
-        }
-
-    });
+function get(path) {
+  const options = {
+    method: 'GET',
+    uri: path
+  };
+  return request(options);
 }
 
-module.exports.getData = get ;
+module.exports.getData = get;
+
 
 
 

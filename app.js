@@ -2,48 +2,39 @@
 
 const http = require('http');
 const url = require('url');
-const fs = require('fs');
 const func = require('./server/functions');
 const get = require('./server/getData');
 const stat = require('node-static');
-const fileServer = new stat.Server( './public', {
-    cache: 3600,
-    gzip: true
-} );
+const parser = require('./server/parser');
+const fileServer = new stat.Server('./public', {
+  cache: 3600,
+  gzip: true
+});
 
-let info;
-const server = (req, res)=>{
-    
-    const q = url.parse(req.url, true);
-    const data = q.query;
-    if (data.path){
-        let path = data.path;
-        const pib = data.pib;
-        const prior = data.prior;
-        get.getData(path,pib,prior);
+const server = (req, res) => {
 
-        // noinspection JSAnnotator
-        function answer(pib,prior) {
-            info = get.obj;
-            const causes = {
-                'first':func.getNumOfOnePriority(info,pib),
-                'first and second':func.getNumOfTwoPriority(info,pib),
-                'first and second and third':func.getNumOfThreePriority(info,pib)
-            }
-            const answer = causes[prior];
-            res.end(''+answer);
-        }
+  const data = url.parse(req.url, true).query;
+  if (data.path) {
+    const path = data.path;
+    const pib = data.pib;
+    const prior = data.prior;
+    const request = get.getData(path);
 
-        module.exports.answer = answer ;
+    request.then(data => {
+      const info = parser.parse(data, pib);
+      const answer = func.getRateByPriority(info, pib, prior);
+      res.end('' + answer);
+    })
+      .catch(err => {
+        throw err;
+      });
 
-            }else {
-                req.addListener( 'end', function () {
-                    fileServer.serve( req, res );
-                } ).resume();
-
-
-    }
+  } else {
+    req.addListener('end', () => {
+      fileServer.serve(req, res);
+    }).resume();
+  }
 };
 
-const runServer = http.createServer(server).listen(8080);
+http.createServer(server).listen(8080);
 
