@@ -1,40 +1,25 @@
+/* eslint-disable no-unused-vars */
 'use strict';
-
-const http = require('http');
-const url = require('url');
-const func = require('./server/functions');
 const get = require('./server/getData');
-const stat = require('node-static');
 const parser = require('./server/parser');
-const fileServer = new stat.Server('./public', {
-  cache: 3600,
-  gzip: true
+const express = require('express');
+const func = require('./server/functions');
+const app = express();
+
+app.use(express.static('public'));
+
+app.get('/server', (req, res) => {
+  const path = req.query.path;
+  const pib = req.query.pib;
+  const prior = req.query.prior;
+  const request = get.getData(path);
+  request.then(data => {
+    const info = parser.parse(data, pib);
+    const answer = func.getRateByPriority(info, pib, prior);
+    res.end('' + answer);
+  }).catch(err => {
+    throw err;
+  });
 });
 
-const server = (req, res) => {
-
-  const data = url.parse(req.url, true).query;
-  if (data.path) {
-    const path = data.path;
-    const pib = data.pib;
-    const prior = data.prior;
-    const request = get.getData(path);
-
-    request.then(data => {
-      const info = parser.parse(data, pib);
-      const answer = func.getRateByPriority(info, pib, prior);
-      res.end('' + answer);
-    })
-      .catch(err => {
-        throw err;
-      });
-
-  } else {
-    req.addListener('end', () => {
-      fileServer.serve(req, res);
-    }).resume();
-  }
-};
-
-http.createServer(server).listen(8080);
-
+app.listen(8080);

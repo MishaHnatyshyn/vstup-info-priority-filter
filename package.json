@@ -1,14 +1,16 @@
-{ 
-  "name": "SbP", 
-  "version": "1.0.0", 
-  "description": "Searching by Priority", 
-  "main": "app.js", 
-  
-  "scripts": { 
-  "install": "npm install request-promise; npm install node-static",
-  "start": "node app.js"
-
-  }, 
-  "author": "MH", 
-  "license": "MIT" 
+{
+  "name": "SbP",
+  "version": "1.0.0",
+  "description": "Searching by Priority",
+  "main": "app.js",
+  "scripts": {
+    "install": "npm install request-promise; npm install node-static;npm install express",
+    "start": "node app.js"
+  },
+  "author": "MH",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
 }

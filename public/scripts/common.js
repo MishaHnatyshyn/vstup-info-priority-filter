@@ -29,7 +29,7 @@ function getInfo() {
     }
   };
 
-  xhttp.open('GET', 'server.js?path=' + path + '&pib=' + pib + '&prior=' + priority, true);
+  xhttp.open('GET', 'server?path=' + path + '&pib=' + pib + '&prior=' + priority, true);
   xhttp.send();
 
 
@@ -38,6 +38,8 @@ function getInfo() {
 
 function checkPath() {
   const path = getBlock('path').value;
-  getBlock('path').style.backgroundColor = !path.indexOf('http://vstup.info/') ? ' rgba(0, 212, 0, 0.63)' : 'rgba(211, 15, 0, 0.76)';
+  const red = 'rgba(211, 15, 0, 0.76)';
+  const green = ' rgba(0, 212, 0, 0.63)';
+  getBlock('path').style.backgroundColor = path.indexOf('http://vstup.info/') ? red : green;
   if (path === '')getBlock('path').style.backgroundColor = 'white';
 }
