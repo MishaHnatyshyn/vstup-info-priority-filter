@@ -6,8 +6,7 @@ function getBlock(id) {
 }
 
 function getInfo() {
-  getBlock('result').innerHTML = '';
-  getBlock('img').style.display = 'inline';
+  getBlock('result').innerHTML = '<img src="images/InternetSlowdown_Day.gif" id="img">';
 
   const priority = getBlock('priority').value;
   const pib = getBlock('pib').value;
