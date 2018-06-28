@@ -1,11 +1,20 @@
+html{
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    height: 100%;
+}
+
 body{
     text-align: center;
     margin: 0px;
     padding: 0px;
+    width: 100%;
+    height: 100%;
 }
 
 form{
-    margin-top: 10%;
+    margin-top: 15%;
     padding: 0px;
     border-radius: 10px;
 }
@@ -20,6 +29,7 @@ input{
 
 button{
     height: 50px;
+    min-width: 120px;
     width: 15%;
     font-size: larger;
     border-radius: 10px;
@@ -30,11 +40,13 @@ button{
 }
 
 #path{
-    width: 800px;
+    width: 90%;
 }
 
 #result{
     height: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 input:focus{
     outline: none;
