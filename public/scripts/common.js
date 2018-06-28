@@ -1,9 +1,7 @@
 /* eslint-disable no-undef,no-unused-vars */
 'use strict';
 
-function getBlock(id) {
-  return document.getElementById(id);
-}
+const getBlock = id => document.getElementById(id);
 
 function parse(file, pib) {
   const table = [];
@@ -58,13 +56,11 @@ function getRateByPriority(data, pib, priority) {
 }
 
 function getInfo() {
-  getBlock('result').innerHTML = '';
-  getBlock('img').style.display = 'inline';
+  getBlock('result').innerHTML = '<img src="images/InternetSlowdown_Day.gif" id="img">';
 
   const priority = getBlock('priority').value;
   const pib = getBlock('pib').value;
   const path = getBlock('path').value;
-
   const xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function() {
@@ -85,9 +81,6 @@ function getInfo() {
 
   xhttp.open('GET', 'server?path=' + path + '&pib=' + pib + '&prior=' + priority, true);
   xhttp.send();
-
-
-
 }
 
 function checkPath() {
