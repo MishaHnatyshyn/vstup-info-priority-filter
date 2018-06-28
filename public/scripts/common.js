@@ -1,4 +1,4 @@
-/* eslint-disable no-undef,no-unused-vars */
+/* eslint-disable no-undef,no-unused-vars,linebreak-style */
 'use strict';
 
 function getBlock(id) {
@@ -6,11 +6,16 @@ function getBlock(id) {
 }
 
 function getInfo() {
-  getBlock('result').innerHTML = '<img src="images/InternetSlowdown_Day.gif" id="img">';
 
   const priority = getBlock('priority').value;
   const pib = getBlock('pib').value;
   const path = getBlock('path').value;
+
+  if (pib === '' || path === '') {
+    alert('Fields can`t be empty!');
+    return;
+  }
+  getBlock('result').innerHTML = '<img src="images/InternetSlowdown_Day.gif" id="img">';
 
   const xhttp = new XMLHttpRequest();
 
@@ -30,9 +35,6 @@ function getInfo() {
 
   xhttp.open('GET', 'server?path=' + path + '&pib=' + pib + '&prior=' + priority, true);
   xhttp.send();
-
-
-
 }
 
 function checkPath() {

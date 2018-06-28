@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars,linebreak-style */
 'use strict';
 const get = require('./server/getData');
 const parser = require('./server/parser');
