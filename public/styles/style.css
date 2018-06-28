@@ -2,7 +2,6 @@ html{
     margin: 0px;
     padding: 0px;
     overflow: hidden;
-    height: 100%;
 }
 
 body{
@@ -10,7 +9,6 @@ body{
     margin: 0px;
     padding: 0px;
     width: 100%;
-    height: 100%;
 }
 
 form{
@@ -36,7 +34,8 @@ button{
 }
 
 #pib{
-    width: 300px;
+    width: 30%;
+    min-width: 250px;
 }
 
 #path{
@@ -67,3 +66,7 @@ select{
     margin-top: 6px;
 }
 
+.container{
+    padding: 0;
+    width: 90%;
+}
