@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Priority</title>
+    <title>Priority Filter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
@@ -14,27 +14,19 @@
 </head>
 <body>
 <div class="container">
-
     <form>
-
-        <input type="text" name="path" id="path" placeholder="Enter the url" onchange="checkPath()" value="http://www.vstup.info/2017/41/i2017i41p369325.html"><br><br>
-        <input type="text" name="pib"  id="pib" placeholder="Enter your PIB like XXXXX X. X." value="Світашова Ю. О."><br><br>
-
+        <input type="text" name="path" id="path" placeholder="Enter the url" onchange="checkPath()"><br><br>
+        <input type="text" name="pib"  id="pib" placeholder="Full name, like Іванов І. І."><br><br>
         <select id="priority">
             <option value="1">1</option>
             <option value="2">1 and 2</option>
             <option value="3">1 and 2 and 3</option>
         </select>
-
     </form>
     <br>
     <button onclick="getInfo()">Calculate</button>
     <div id="result">
     </div>
-
-    <img src="images/InternetSlowdown_Day.gif" id="img">
-
-
 </div>
 </body>
 </html>
