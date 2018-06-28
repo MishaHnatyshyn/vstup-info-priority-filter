@@ -7,7 +7,7 @@ INSTRUCTION
 1.  Go to the http://vstup.info and search there university, faculty and profession you have sent documends to enter on;
 2.  Make sure that your full name is listed on that page;
 3.  Now copy the link to that page and go to http://priority-filter-priority-filter.1d35.starter-us-east-1.openshiftapps.com/ ;
-4.  Past your link in the first input fild;
+4.  Insert your link in the first field;
 5.  Write in the second field your surname and initials;
 6.  Select priority or priorities in a dropown list;
 7.  Press "Calculate";
