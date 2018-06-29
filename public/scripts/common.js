@@ -11,8 +11,8 @@ function getInfo() {
   const pib = getBlock('pib').value;
   const path = getBlock('path').value;
 
-  if (pib === '' || path === '') {
-    alert('Fields can`t be empty!');
+  if (pib === '' || path === '' || !path.indexOf('http://vstup.info/')) {
+    alert('Fields are empty or wrong link');
     return;
   }
   getBlock('result').innerHTML = '<img src="images/InternetSlowdown_Day.gif" id="img">';
