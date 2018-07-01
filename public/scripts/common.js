@@ -11,7 +11,7 @@ function getInfo() {
   const pib = getBlock('pib').value;
   const path = getBlock('path').value;
 
-  if (pib === '' || path === '' || !path.indexOf('http://vstup.info/')) {
+  if (pib === '' || path === ''/* || !path.indexOf('http://vstup.info/')*/) {
     alert('Fields are empty or wrong link');
     return;
   }
