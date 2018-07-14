@@ -1,10 +1,10 @@
 'use strict';
 const table = [];
 const result = {};
-const tableFields = ['number', 'pib', 'status', 'priority', 'kb', 'zno', 'kf', 'kw', 'docs'];
+const tableFields = ['number', 'pib', 'priority', 'kb', 'status', 'zno'];
 
 function parse(file, pib) {
-  let start = file.indexOf('<tbody>', file.indexOf('<table id="150'));
+  let start = file.indexOf('<tbody>', file.indexOf('<table id="15'));
   let end = file.indexOf('</table>', start);
   file = file.substring(start, end);
 

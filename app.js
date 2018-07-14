@@ -18,7 +18,7 @@ app.get('/server', (req, res) => {
     const answer = func.getRateByPriority(info, pib, prior);
     res.end('' + answer);
   }).catch(err => {
-    throw err;
+    res.end('404');
   });
 });
 
