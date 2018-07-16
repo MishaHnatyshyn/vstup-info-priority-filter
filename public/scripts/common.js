@@ -15,10 +15,10 @@ function getInfo() {
     alert('Fields are empty');
     return;
   }
-  if (path.indexOf('http://www.vstup.info/') === -1) {
-    alert('Invalid URL');
-    return;
-  }
+  // if (path.indexOf('http://www.vstup.info/') === -1) {
+  //   alert('Invalid URL');
+  //   return;
+  // }
   getBlock('result').innerHTML = '<img src="images/InternetSlowdown_Day.gif" id="img">';
 
   const xhttp = new XMLHttpRequest();
