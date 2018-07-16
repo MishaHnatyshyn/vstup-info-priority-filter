@@ -15,10 +15,10 @@ function getInfo() {
     alert('Fields are empty');
     return;
   }
-  // if (path.indexOf('http://www.vstup.info/') === -1) {
-  //   alert('Invalid URL');
-  //   return;
-  // }
+  if (path.indexOf('http://www.vstup.info/') === -1 && path.indexOf('https://vstup.osvita.ua') === -1) {
+    alert('Invalid URL');
+    return;
+  }
   getBlock('result').innerHTML = '<img src="images/InternetSlowdown_Day.gif" id="img">';
 
   const xhttp = new XMLHttpRequest();
@@ -43,9 +43,9 @@ function getInfo() {
 }
 
 function checkPath() {
-  const path = getBlock('path').value;
-  const red = 'rgba(211, 15, 0, 0.76)';
-  const green = ' rgba(0, 212, 0, 0.63)';
-  getBlock('path').style.backgroundColor = path.indexOf('http://www.vstup.info/') === -1 ? red : green;
-  if (path === '')getBlock('path').style.backgroundColor = 'white';
+  // const path = getBlock('path').value;
+  // const red = 'rgba(211, 15, 0, 0.76)';
+  // const green = ' rgba(0, 212, 0, 0.63)';
+  // getBlock('path').style.backgroundColor = (path.indexOf('http://') === -1 || path.indexOf('https://') === -1) ? red : green;
+  // if (path === '')getBlock('path').style.backgroundColor = 'white';
 }
