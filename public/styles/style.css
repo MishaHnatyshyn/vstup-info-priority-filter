@@ -49,16 +49,24 @@ button{
     padding-left: 15px;
     padding-right: 15px;
 }
+
 input:focus{
     outline: none;
 }
+
+select:focus{
+    outline: none;
+}
+
 button:focus{
     outline: none;
 }
+
 img{
     width: 150px;
     height: 150px;
 }
+
 select{
     height: 40px;
     font-size: larger;
