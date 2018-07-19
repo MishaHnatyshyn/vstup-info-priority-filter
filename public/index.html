@@ -21,7 +21,25 @@
     </script>
 </head>
 <body>
-<div class="container">
+
+<div class="container" id="container">
+    <div class="container" id="instruction-banner">
+        <h5 align="center">Vstup.info & Osvita.vstup.ua priority filter</h5>
+        <p>This web service allows you to found out easily your position in rating on site vstup.info among people with 1, 1 or 2, 1 or 2 or 3 priorities.
+        This slould help you to evaluate the chances of entering a certain university better.</p>
+        <h6>INSTRUCTION</h6>
+        <ul>
+            <li>Go to the http://vstup.info or https://vstup.osvita.ua/ and search there university, faculty and profession you have sent documends to enter on;</li>
+            <li>Make sure that your full name is listed on that page;</li>
+            <li>Now copy the link to that page and go back;</li>
+            <li>Insert your link in the first field;</li>
+            <li>Write in the second field your surname and initials;</li>
+            <li>Select priority or priorities in a dropown list;</li>
+            <li>Press "Calculate";</li>
+        </ul>
+        <p>If you made everything clear, in few second you will see a message about your position according to the priority you chose. In other case you will get message: "This person is not mentioned in the list", that means you made some mistake in surname and initials or in link to the page with rating table on vstup.info.</p>
+        <h5 align="center"><span class="click" onclick="instructionHide()">Close</span></h5>
+    </div>
     <form>
         <input type="text" name="path" id="path" placeholder="Enter the url" onchange="checkPath()"><br><br>
         <input type="text" name="pib"  id="pib" placeholder="Full name, like Іванов І. І."><br><br>
@@ -35,6 +53,9 @@
     <button onclick="getInfo()">Calculate</button>
     <div id="result">
     </div>
+</div>
+<div id="footer">
+    <h5 align="center"><span class="click" onclick="instructionShow()">Show instruction</span></h5>
 </div>
 </body>
 </html>

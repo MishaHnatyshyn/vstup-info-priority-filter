@@ -1,11 +1,9 @@
 /* eslint-disable no-undef,no-unused-vars,linebreak-style */
 'use strict';
 
-function getBlock(id) {
-  return document.getElementById(id);
-}
+const getBlock = (id) => document.getElementById(id);
 
-function getInfo() {
+const getInfo = () => {
 
   const priority = getBlock('priority').value;
   const pib = getBlock('pib').value;
@@ -31,21 +29,25 @@ function getInfo() {
         '2': 'first and second',
         '3': 'first, second and third'
       };
-      let answer = this.responseText === '0' ? 'This person is not mentioned in the list' :
-        'Your rate by the ' + numToString[priority] + ' priority is: ' + this.responseText;
-      if (this.responseText === '404') answer = 'Request error. Please, enter correct url and try again.';
-      getBlock('result').innerHTML = '<br><br><br><h1>' + answer + '</h1>';
+      const response = JSON.parse(this.responseText);
+      const answer = response.error ?
+        'Request error. Please, enter correct url and try again.' :
+        response.result ? 'Your rate by the ' + numToString[priority] + ' priority is: ' + response.result :
+          'This person is not mentioned in the list';
+      getBlock('result').innerHTML = '<br><br><h1>' + answer + '</h1>';
     }
   };
 
   xhttp.open('GET', 'server?path=' + path + '&pib=' + pib + '&prior=' + priority, true);
   xhttp.send();
-}
+};
 
-function checkPath() {
-  // const path = getBlock('path').value;
-  // const red = 'rgba(211, 15, 0, 0.76)';
-  // const green = ' rgba(0, 212, 0, 0.63)';
-  // getBlock('path').style.backgroundColor = (path.indexOf('http://') === -1 || path.indexOf('https://') === -1) ? red : green;
-  // if (path === '')getBlock('path').style.backgroundColor = 'white';
-}
+const instructionShow = () => {
+  document.getElementById('instruction-banner').style.display = 'block';
+  document.getElementById('footer').style.display = 'none';
+};
+
+const instructionHide = () => {
+  document.getElementById('instruction-banner').style.display = 'none';
+  document.getElementById('footer').style.display = 'block';
+};

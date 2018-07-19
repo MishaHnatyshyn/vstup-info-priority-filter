@@ -18,9 +18,11 @@ app.get('/server', (req, res) => {
   request.then(data => {
     const info = parser.parse(data, pib);
     const answer = func.getRateByPriority(info, pib, prior);
-    res.end('' + answer);
+    func.log(path, pib, prior, answer, false);
+    res.end(JSON.stringify({ result: answer, error: false }));
   }).catch(err => {
-    res.end('404');
+    func.log(path, pib, prior, null, err);
+    res.end(JSON.stringify({ result: null, error: true }));
   });
 });
 
